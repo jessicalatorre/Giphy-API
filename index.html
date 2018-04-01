@@ -10,21 +10,33 @@
     <link rel="stylesheet" href="assets/css/style.css">
     <title>Document</title>
 </head>
+<!-- header -->
 <div class="jumbotron">
     <div class="header-container">
         <h1>Giphy API Search</h1>
     </div>
 </div>
-
-<div id="gif-button-container" class="container">
+<!-- buttons details-->
+<div id="gif-buttons" class="container">
     <!-- film-maker buttons go here -->
 </div>
 <body>
-    <input id="search" type="text" placeholder="Search Here...">
-    <button id "search-button" type="submit">Search</button>
-    <div class="container">
 
+<div class="container">
+    <div id="gifBucket"></div>
+    <!-- submission details -->
+    <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+            <form id="gif-form" role="form">
+                <h2>Type in another film maker to find more gifs</h2>
+                <div class="form-group">
+                    <input type="text" id="action-input" placeholder="ex: Patty Jenkins">
+                </div>
+                <input id="newGif" type="submit" value="Add your action" class="btn btn-default">
+                <input id="removeGif" type="submit" value="Remove last action" class="btn btn-default">
+            </form>    
+        </div>
     </div>
+
 
 <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
 
