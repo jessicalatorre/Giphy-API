@@ -42,7 +42,8 @@ $(document).ready(function () {
                 .done(function (response){
                 console.log(response);
                     // $('#gif-button-container').empty();
-                    // var results = response.data;
+                    //prepend gif to DOM
+                    $('#gifBucket').prepend("<img src='"+response.data[0].images.downsized.url+"'>");
                 })
             })
         });
