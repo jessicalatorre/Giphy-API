@@ -43,7 +43,9 @@ $(document).ready(function () {
                 console.log(response);
                     // $('#gif-button-container').empty();
                     //prepend gif to DOM
-                    $('#gifBucket').prepend("<img src='"+response.data[0].images.downsized.url+"'>");
+                for(var i=0;i < response.data.length; i++) {
+                $('#gifBucket').prepend("<img src='"+response.data[i].images.downsized.url+"'>");
+                   }
                 })
             })
         });
