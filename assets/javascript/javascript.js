@@ -21,21 +21,21 @@ $(document).ready(function () {
             gifButton.text(filmMakerArray[i]);
             //Add the buttons to the DOM under using jQuery search using div id below
             $('#gif-buttons').append(gifButton);
-        
-        // $('button.filmMaker').on('click',) {
-        //     $('#gifButtons').empty ();
-        //     var NewDirector =$(this).attr('data-name');
-        // }
+
+            // $('button.filmMaker').on('click',) {
+            //     $('#gifButtons').empty ();
+            //     var NewDirector =$(this).attr('data-name');
+            // }
         }
     }
     //Pseudo Code: 
     //capture user input after "new-filmer" maker button is clicked. Push to filmMakerArray. 
     //onclick event for new button to display gif (use call backs to achieve this? not sure how to call back queryURL and displayButtons Function)
-    
     function registerButtonClickHandler() {
         $('#newGif').on('click', function (event) { //put event in function () so the event is called
-            $('#gif-buttons').empty();//empty values stored in div
             event.preventDefault();//prevent entire page from being submitted when submit button clicked
+            $('#gif-buttons').empty();//empty values stored in div
+
             console.log("button clicked");
             var filmMaker = $('#user-input').val().trim();
             // if (filmMaker == "") {
@@ -46,12 +46,15 @@ $(document).ready(function () {
             filmMakerArray.push(filmMaker);
 
             displayButtonsFunction(); //call back button function
+            // return false; //
         });
     }
-    console.log(displayButtonsFunction());
+    // console.log(displayButtonsFunction());
+    displayButtonsFunction();
+    registerButtonClickHandler();
 
     //display gifs after film maker button clicked
-    $('button.filmMaker').on('click', function (event) {
+    $(document).on('click', 'button.filmMaker', function (event) {
         //created variable to store the filmMaker attribute of data-name once the button is clicked...
         $('#gif-buttons').empty ();
         event.preventDefault();
@@ -74,18 +77,19 @@ $(document).ready(function () {
                 for (var i = 0; i < response.data.length; i++) {
                     //create new div & class to store in variable
                     var gifDiv = $('<div>');
+                    gifDiv.addClass('gifPDiv');
                     //new var to store new p tag. Using .text to write "Rating" & rating from AJAX results
                     var pRating = $('<p>').text("Rating: " + response.data[i].rating);
 
                     var gifImg = $('<img>');
                     //img src attribute
-                    gifImg.attr('src', response.data[i].images.fixed_height_small_still.url); 
+                    gifImg.attr('src', response.data[i].images.fixed_height_small_still.url);
                     //still img
-                    gifImg.attr('data-still', response.data[i].images.fixed_height_small_still.url); 
+                    gifImg.attr('data-still', response.data[i].images.fixed_height_small_still.url);
                     // animate img
                     gifImg.attr('data-animate', response.data[i].images.fixed_height_small.url);
                     //adding img state attribute
-                    gifImg.attr('data-state', 'still'); 
+                    gifImg.attr('data-state', 'still');
                     //add class to gifImage var
                     gifImg.addClass('image');
 
@@ -103,7 +107,7 @@ $(document).ready(function () {
             })
     })
     //onclick function
-    $("#gifBucket").on("click",'.image', function () {
+    $("#gifBucket").on("click", '.image', function () {
         // The attr jQuery method allows us to get or set the value of any attribute on our HTML element
         var state = $(this).attr("data-state");
         // If the clicked image's state is still, update its src attribute to what its data-animate value is.
@@ -122,37 +126,37 @@ $(document).ready(function () {
 
 
 });
- 
-//     function registerButtonClickHandler() {
-//         $('#newGif').on('click', function (event) { //put event in function () so the event is called
-//             $('#gif-buttons').empty();//empty values stored in div
-//             event.preventDefault();//prevent entire page from being submitted when submit button clicked
-//             console.log("button clicked");
-//             var filmMaker = $('#user-input').val().trim();
-//             // if (filmMaker == "") {
-//             //     return false
-//             //     alert("please type a film maker's name");
-//             // }
 
-//             filmMakerArray.push(filmMaker);
+    // function registerButtonClickHandler() {
+    //     $('#newGif').on('click', function (event) { //put event in function () so the event is called
+    //         $('#gif-buttons').empty();//empty values stored in div
+    //         event.preventDefault();//prevent entire page from being submitted when submit button clicked
+    //         console.log("button clicked");
+    //         var filmMaker = $('#user-input').val().trim();
+    //         // if (filmMaker == "") {
+    //         //     return false
+    //         //     alert("please type a film maker's name");
+    //         // }
 
-//             displayButtonsFunction(); //call back button function
-//             // return false; //
-//         });
-//     }
-//     function removeUserAddedButton() {
-//         $('#removeGif').on('click', function () {
-//             event.preventDefault();
-//             filmMakerArray.pop(filmMaker);
-//             displayButtonsFunction();
-//             return false;
-//         });
-//     }
+    //         filmMakerArray.push(filmMaker);
 
-
-// // var xhr = $.get("http://api.giphy.com/v1/gifs/search?q=ryan+gosling&api_key=YOUR_API_KEY&limit=5");
-// // xhr.done(function(data) { console.log("success got data", data); });
-// //var queryURL = "http://api.giphy.com/v1/gifs/search?q=" + filmMaker + "api_key=K7VHz9NppDBHaxASoEIbI1cTsz62R7vB&limit=10";
+    //         displayButtonsFunction(); //call back button function
+    //         // return false; //
+    //     });
+    // }
+    // function removeUserAddedButton() {
+    //     $('#removeGif').on('click', function () {
+    //         event.preventDefault();
+    //         filmMakerArray.pop(filmMaker);
+    //         displayButtonsFunction();
+    //         return false;
+    //     });
+    // }
 
 
-// //
+// var xhr = $.get("http://api.giphy.com/v1/gifs/search?q=ryan+gosling&api_key=YOUR_API_KEY&limit=5");
+// xhr.done(function(data) { console.log("success got data", data); });
+//var queryURL = "http://api.giphy.com/v1/gifs/search?q=" + filmMaker + "api_key=K7VHz9NppDBHaxASoEIbI1cTsz62R7vB&limit=10";
+
+
+//

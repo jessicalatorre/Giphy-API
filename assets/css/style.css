@@ -6,3 +6,21 @@
     height: 100px;
     width: 130px;
 }
+
+.gifPDiv {
+    float: left;
+}
+
+form {
+    position: fixed;
+    left: 810px;
+    top:400px;
+    width: 100px;
+    height: 100px;
+}
+
+h2 {
+    font-size: 16px;
+    text-align: left;
+    width: 180px;
+}
