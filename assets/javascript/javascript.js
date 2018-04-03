@@ -2,7 +2,7 @@
 $(document).ready(function () {
     console.log('ready');
 
-    var filmMakerArray = ["Guillermo del Toro", "Ava DuVernay", "Pedro Almodovar", "Taika Waititi", "Jean Luc Goddard", "Spike Jonze", "Jordan Peele"];
+    var filmMakerArray = ["Guillermo del Toro", "Ava DuVernay", "Pedro Almodovar", "Taika Waititi", "Jean Luc Godard", "Spike Jonze", "Jordan Peele"];
     console.log(filmMakerArray);
 
     //function to dynamically createg gif buttons
@@ -28,6 +28,7 @@ $(document).ready(function () {
     //display gifs after film maker button clicked
     $('button').on('click', function () {
         //created variable to store the filmMaker attribute of data-name once the button is clicked...
+        event.preventDefault();
         var directorName = $(this).data('name');
         //console log new variable to see the director name each time a button is clicked.
         //Ensures we can search for the correct individual when we set up our AJAX Call
@@ -37,18 +38,35 @@ $(document).ready(function () {
         //console logged results. After clicking Ava DuVernay button, we see the url for her in the console.
         console.log(queryURL);
 
-        //AJAX Request
-        $.ajax({url: queryURL, method:'GET'})
-                .done(function (response){
+        //AJAX Request / calls the query function
+        $.ajax({ url: queryURL, method: 'GET' })
+
+            .done(function (response) {
                 console.log(response);
-                    // $('#gif-button-container').empty();
-                    //prepend gif to DOM
-                for(var i=0;i < response.data.length; i++) {
-                $('#gifBucket').prepend("<img src='"+response.data[i].images.downsized.url+"'>");
-                   }
-                })
+                $('#gifBucket').empty();
+                //print results to page
+                for (var i = 0; i < response.data.length; i++) {
+                    //create new div & class to store in variable
+                    var gifDiv = $('<div>');
+                    //new var to store new p tag. Using .text to write "Rating" & rating from AJAX results
+                    var pRating = $('<p>').text("Rating: " + response.data[i].rating);
+                    var gifImg =$('<img>');
+                    gifImg.attr('src', response.data[i].images.fixed_height.url);
+
+                    gifDiv.prepend(pRating);
+                    gifDiv.append(gifImg);
+                    $('#gifBucket').append(gifDiv);
+                    //review prevent Default
+                    event.preventDefault();
+                    // $('#gifBucket').prepend("<img src='" + response.data[i].images.downsized.url + "'>");
+                    // $('#gifBucket').prepend("<p>Rating: " + response.data[i].rating + "</p>");
+                }
             })
-        });
+    })
+// displayButtonsFunction ();
+// $(document).on('click', '.action', display)
+
+});
 
 //     function registerButtonClickHandler() {
 //         $('#newGif').on('click', function () {
