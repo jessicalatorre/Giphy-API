@@ -33,9 +33,8 @@ $(document).ready(function () {
     //onclick event for new button to display gif (use call backs to achieve this? not sure how to call back queryURL and displayButtons Function)
     function registerButtonClickHandler() {
         $('#newGif').on('click', function (event) { //put event in function () so the event is called
+            // $('#gif-buttons').empty();//empty values stored in div
             event.preventDefault();//prevent entire page from being submitted when submit button clicked
-            $('#gif-buttons').empty();//empty values stored in div
-
             console.log("button clicked");
             var filmMaker = $('#user-input').val().trim();
             // if (filmMaker == "") {
@@ -49,14 +48,14 @@ $(document).ready(function () {
             // return false; //
         });
     }
-    // console.log(displayButtonsFunction());
+    console.log(displayButtonsFunction());
     displayButtonsFunction();
     registerButtonClickHandler();
 
     //display gifs after film maker button clicked
     $(document).on('click', 'button.filmMaker', function (event) {
         //created variable to store the filmMaker attribute of data-name once the button is clicked...
-        $('#gif-buttons').empty ();
+        // $('#gif-bucket').empty();
         event.preventDefault();
         var directorName = $(this).data('name');
         //console log new variable to see the director name each time a button is clicked.
@@ -108,8 +107,10 @@ $(document).ready(function () {
     })
     //onclick function
     $("#gifBucket").on("click", '.image', function () {
+        
         // The attr jQuery method allows us to get or set the value of any attribute on our HTML element
         var state = $(this).attr("data-state");
+        console.log(this)
         // If the clicked image's state is still, update its src attribute to what its data-animate value is.
         // Then, set the image's data-state to animate
         // Else set src to the data-still value
@@ -123,8 +124,6 @@ $(document).ready(function () {
             console.log(state);
         }
     });
-
-
 });
 
     // function registerButtonClickHandler() {
