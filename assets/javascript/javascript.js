@@ -48,12 +48,15 @@ $(document).ready(function () {
             displayButtonsFunction(); //call back button function
         });
     }
-    console.log(displayButtonsFunction());
+    
+    // initial page load show buttons and register click handler for "add"    
+    displayButtonsFunction();
+    registerButtonClickHandler();
 
     //display gifs after film maker button clicked
-    $('button.filmMaker').on('click', function (event) {
+    $(document).on('click', 'button.filmMaker', function (event) {
         //created variable to store the filmMaker attribute of data-name once the button is clicked...
-        $('#gif-buttons').empty ();
+        $('#gif-buttons').empty();
         event.preventDefault();
         var directorName = $(this).data('name');
         //console log new variable to see the director name each time a button is clicked.
