@@ -1,4 +1,4 @@
-# Search for gifs of your favorite film makers!:movie_camera:!
+# Search for gifs of your favorite film makers:movie_camera:!
 
 # How it Works
 *Filmmaker Search* Is an app that uses an AJAX call to the Giphy API to dynamically render filmmaker gifs at the top of the browser page. I thought of the idea because I love indie movies and art house films, and I figured displaying silly and somewhat dry-humored gifs would be a fun way to share these interests.
