@@ -6,7 +6,7 @@ Search for gifs of your favorite film makers with this fun app!
 
 Users can search for their favorite film maker by typing a name into the small text box and clicking the "add-filmmaker" button. This submission adds a new button with the artist's name, as well as the corresponding rating for each.
 
-Each submission renders at least ten static gifs. Users can start and stop animation by clicking on it. The handy feature was added, so nobody would be overwhelmed if they clicked on all ten gifs. :dizzy_face:
+Each submission renders at least ten static gifs. Users can start and stop animation by clicking on it. The handy feature was added, so nobody would be overwhelmed :dizzy_face: if they clicked on all ten gifs. :relieved:
 
 # About the API
 Check out their Giphy's GitHub repo to learn more:
