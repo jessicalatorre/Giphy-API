@@ -1,9 +1,17 @@
 # Giphy-API
+Search for gifs of your favorite film makers with this fun app!
 
-I created a simple Film Maker app using JavaScript and the Giphy API. I started by creating an array of film makers, so a for loop could dynamically create buttons and attributes for each of them as the loop iterates. Each time a user clicks a film maker button, at least 10 corresponding images are retrieved using the Giphy API and are rendered on the browser page. When a user clicks a still image, the gif animates, and after another click, it stops. Ratings for each gif also are displayed above each gif..
+# Description
+*Film Maker Giphy Search* Is an app that uses an AJAX call to the Giphy API to dynamically render film maker gifs at the top of the browser page.
 
-Next Steps:
-Finish coding the option that allows users to type in a new film maker, so it can be added to the menu of buttons. Once the new button is clicked, corresponding gifs and ratings should displayed for the new film maker’s gifs.
+Users can search for their favorite film maker by typing a name into the small text box and clicking the "add-filmmaker" button. This submission adds a new button with the artist's name, as well as the corresponding rating for each.
 
-More Information about Giphy:
+Each submission renders at least ten static gifs. Users can start and stop animation by clicking on it. The handy feature was added, so nobody would be overwhelmed if they clicked on all ten gifs. :dizzy_face:
+
+# About the API
+Check out their Giphy's GitHub repo to learn more:
 https://github.com/Giphy/GiphyAPI
+
+# Check out the App:
+https://jessicalatorre.github.io/Giphy-API/
+
